@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            University Admission Form
+        </title>
+        <body>
+            <h2>University Admission Form</h2>
+            <form>
+                <table>
+                    <tr>
+                        <td><h3>Student's Information's:</h3></td>
+                    </tr>
+                    <tr>
+                        <td>Student's Name:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Father's Name:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Mother's Name:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Birth Date:</td>
+                        <td><input type="date"></td>
+                        <td>Gender:</td>
+                        <td>
+                            <input type="radio" name="gender" value="Male"> Male
+                            <input type="radio" name="gender" value="female"> Female
+                            <input type="radio" name="gender" value="other"> Others
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h3>Present Address:</h3></td>
+                    </tr>
+                    <tr>
+                        <td>Division:</td>
+                        <td><input type="text"></td>
+                        <td>District:</td>
+                        <td><input type="text"></td>
+                        <td>Address:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><h3>Permanent Address:</h3></td>
+                    </tr>
+                    <tr>
+                        <td>Division:</td>
+                        <td><input type="text"></td>
+                        <td>District:</td>
+                        <td><input type="text"></td>
+                        <td>Address:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><h3>Other Information's:</h3></td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <label for="religion">Religion:</label>
+                        <select name="religion" id="religion">
+                            <option value="islam">Islam</option>
+                            <option value="hindu">Hindu</option>
+                            <option value="budhist">Budhist</option>
+                        </select>
+                        </td>
+                    </tr>
+                    <td>
+                        <label for="nationality">Nationality:</label>
+                        <select name="nationality" id="nationality">
+                            <option value="bangladeshi">Bangladeshi</option>
+                            <option value="indian">Indian</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>Phone Number:</td>
+                        <td><input type="text" maxlength="11" required></td>
+                        <td>Email:</td>
+                        <td><input type="email" required></td>
+                    </tr>
+                    <td>
+                        <h2>Declaration</h2>
+                        <h4>I hereby, declared that I will obey all the rules.</h4>
+                        <tr><td><input type="checkbox" required></tr>
+                    </td>
+                    <tr>
+                        <td>Signature</td>
+                        <td><input type="file" required></td>
+                    </tr>
+                    <tr>
+                        <td><center><button>Submit</button></center></td>
+                    </tr>
+                </table>
+            </form>
+        </body>
+    </head>
+</html>
