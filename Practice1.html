@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Infromations</title>
+        <style>
+            body {background-color:rgb(112, 241, 255);}
+            #header1
+            {
+                color:black;
+                text-align: center;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 200%;
+                letter-spacing: 3px;
+                word-spacing: 5px;
+            }
+            .button1
+            {
+                color: rgb(255, 255, 255);
+                background-color: rgb(0, 0, 0);
+                border: 2px solid rgb(255, 213, 0);
+                font-size: 100%;
+                font-family: verdana;
+                padding: 5px;
+                border-radius: 10px;
+            }
+            .center1
+            {
+                text-align: center;
+                margin-right: 180px;
+                margin-top: 5px;
+            }
+            .center2
+            {
+                text-align: center;
+                margin-top: 5px;
+            }
+            table
+            {
+                padding: 20px;
+                border: 3px solid black;
+                /* border-collapse: collapse; */
+                background-color: rgb(188, 249, 171);
+                border-radius: 8px;
+                /* border-style: dotted; */
+                margin: auto;
+            }
+            .container
+            {
+                display:flex;
+                justify-content: space-evenly;
+            }
+            .box
+            {
+                color: white;
+                background-color: rgb(0, 0, 0);
+                margin-top: 35px;
+                border: 3px solid rgb(241, 255, 86);
+                padding: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="header1">Information Sumission Form</h1>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="email" required></td>
+            </tr>
+            <tr>
+                <td>Contact Number:</td>
+                <td><input type="tel" maxlength="11"></td>
+            </tr>
+            <tr>
+                <td>Birth-Date:</td>
+                <td><input type="date"></td>
+            </tr>
+            <tr>
+                <td>Religion:</td>
+                <td>
+                    <select>
+                        <option>Islam</option>
+                        <option>Hindu</option>
+                        <option>Others</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Attach Image:</td>
+                <td><input type="file"></td>
+            </tr>
+            <tr>
+                <td>Choose Language:</td>
+                <td>
+                    <input type="checkbox">Bangla
+                    <input type="checkbox">English
+                </td>
+            </tr>
+        </table>
+        <div class="center1">
+            <input type="checkbox">Agreed with Terms & Conditions<br>
+        </div>
+        <div class="center2">
+           <!-- <button class="button1" onclick="window.location.href='LT1Next.html'">Submit</button> -->
+           <button class="button1" onclick="alert('Submitted!')">Submit</button>
+        </div>
+        <div class="container">
+            <div class="box"><h1>Box 1</h1></div>
+            <div class="box"><h1>Box 2</h1></div>
+            <div class="box"><h1>Box 3</h1></div>
+        </div>
+
+    </body>
+</html>
