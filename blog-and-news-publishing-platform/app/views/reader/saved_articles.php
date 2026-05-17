@@ -1,8 +1,18 @@
-﻿<?php
+<?php
 require_once("../../models/Article.php");
 session_start();
 
 $article = new Article();
+if(isset($_GET["remove"]))
+{
+    $article->removeSavedArticle(
+        $_GET["remove"],
+        $_SESSION["user_id"]
+    );
+
+    header("Location: saved_articles.php");
+    exit();
+}
 
 $result = $article->getSavedArticles(
     $_SESSION["user_id"]
@@ -53,6 +63,19 @@ $result = $article->getSavedArticles(
             echo $row["excerpt"];
 
             echo "</p>";
+            echo "<a href='saved_articles.php?remove=";
+
+            echo $row["id"];
+
+            echo "'>";
+
+            echo "<button class='btn-danger'>";
+
+            echo "Remove";
+
+            echo "</button>";
+
+            echo "</a>";
             echo "</div>";
         }
     }
