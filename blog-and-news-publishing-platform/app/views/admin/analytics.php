@@ -95,6 +95,51 @@ function percent($value,$total)
 
     </div>
 
+    <div class="card">
+
+        <h2>Total Articles</h2>
+
+        <div class="bar">
+
+            <div
+                class="fill"
+                style="width:100%"
+            >
+
+                <?php
+                echo $totalArticles;
+                ?>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <h2>Published Articles</h2>
+
+        <div class="bar">
+
+            <div
+                class="fill"
+                style="width:<?php
+                echo percent(
+                    $published,
+                    $totalArticles
+                );
+                ?>%"
+            >
+
+                <?php
+                echo $published;
+                ?>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
 </body>
