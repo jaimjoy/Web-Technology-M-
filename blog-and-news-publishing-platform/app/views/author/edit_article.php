@@ -58,4 +58,34 @@ if(isset($_POST["update"]))
         
     <h1>Edit Article</h1>
 
-   
+    <form method="POST">
+
+        <input
+            type="text"
+            name="title"
+            value="<?php echo $row["title"]; ?>"
+        >
+
+        <br><br>
+
+        <textarea
+            name="excerpt"
+            rows="4"
+            cols="50"
+        ><?php
+        echo $row["excerpt"];
+        ?></textarea>
+
+        <br><br>
+
+        <textarea
+            name="body"
+            rows="10"
+            cols="50"
+        ><?php
+        echo $row["body"];
+        ?></textarea>
+
+        <br><br>
+
+       
