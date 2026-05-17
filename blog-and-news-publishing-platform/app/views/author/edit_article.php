@@ -129,4 +129,32 @@ if(isset($_POST["update"]))
 
         <br><br>
 
-       
+        <select name="status">
+
+        <option
+            value="pending"
+
+            <?php
+            if($row["status"]=="pending")
+            {
+                echo "selected";
+            }
+            ?>
+        >
+            Submit For Review
+        </option>
+
+    </select>
+
+        <br><br>
+
+        <button
+            type="submit"
+            name="update"
+        >
+            Update Article
+        </button>
+    </form>
+
+</body>
+</html>
