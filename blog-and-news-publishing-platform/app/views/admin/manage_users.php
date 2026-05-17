@@ -48,11 +48,48 @@ if(isset($_POST["update_role"]))
     exit();
 }
 
-$sql="SELECT *
-FROM users
-ORDER BY created_at DESC";
+    $sql="SELECT *
+    FROM users";
 
-$result=$conn->query($sql);
+    $where=[];
+
+    if(
+        isset($_GET["search"])
+        &&
+        !empty($_GET["search"])
+    )
+    {
+        $search=$_GET["search"];
+
+        $where[]=
+        "name LIKE '%$search%'";
+    }
+
+    if(
+        isset($_GET["role"])
+        &&
+        !empty($_GET["role"])
+    )
+    {
+        $role=$_GET["role"];
+
+        $where[]=
+        "role='$role'";
+    }
+
+    if(count($where)>0)
+    {
+        $sql.=" WHERE ";
+
+        $sql.=implode(
+            " AND ",
+            $where
+        );
+    }
+
+       $sql.=" ORDER BY created_at DESC";
+
+       $result=$conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -91,6 +128,53 @@ $result=$conn->query($sql);
 
     </div>
 
+    <form method="GET" class="card">
+
+        <input
+            type="text"
+            name="search"
+            placeholder="Search user name"
+            value="<?php
+            if(isset($_GET["search"]))
+            {
+                echo $_GET["search"];
+            }
+            ?>"
+    >
+
+            <select name="role">
+
+                <option value="">
+                    All Roles
+                </option>
+
+                <option value="reader">
+                    Reader
+                </option>
+
+                <option value="author">
+                    Author
+                </option>
+
+                <option value="editor">
+                    Editor
+                </option>
+
+                <option value="admin">
+                    Admin
+                </option>
+
+            </select>
+
+                <button type="submit">
+                    Filter
+                </button>
+
+    </form>
+
+    <br>
+
+    <div id="userResults">
     <?php
 
     if($result->num_rows>0)
@@ -162,11 +246,12 @@ $result=$conn->query($sql);
         }
     }
     else
-    {
-        echo "<div class='card'>No Users Found</div>";
-    }
-
-    ?>
+        {
+            echo "<div class='card'>No Users Found</div>";
+            }
+            
+            ?>
+    </div>
 
 </div>
 
