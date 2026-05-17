@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once("../../middleware/admin.php");
 require_once(__DIR__ . "/../../../config/database.php");
 
@@ -32,12 +32,48 @@ users.name AS author_name
 FROM articles
 
 JOIN users
-ON articles.author_id=users.id
+ON articles.author_id=users.id";
 
-ORDER BY articles.created_at DESC";
+$where=[];
 
-$result=$conn->query($sql);
-?>
+if(
+    isset($_GET["status"])
+    &&
+    !empty($_GET["status"])
+)
+{
+    $status=$_GET["status"];
+
+    $where[]=
+    "articles.status='$status'";
+}
+
+if(
+    isset($_GET["search"])
+    &&
+    !empty($_GET["search"])
+)
+{
+    $search=$_GET["search"];
+
+    $where[]=
+    "articles.title LIKE '%$search%'";
+}
+
+if(count($where)>0)
+{
+    $sql.=" WHERE ";
+
+    $sql.=implode(
+        " AND ",
+        $where
+    );
+}
+
+    $sql.=" ORDER BY articles.created_at DESC,articles.created_at DESC";
+
+       $result=$conn->query($sql);
+    ?>
 
 <!DOCTYPE html>
 <html>
@@ -74,6 +110,52 @@ $result=$conn->query($sql);
         </p>
 
     </div>
+
+    <form method="GET" class="card">
+
+        <select name="status">
+
+            <option value="">
+                All Status
+            </option>
+
+            <option value="published">
+                Published
+            </option>
+
+            <option value="pending">
+                Pending
+            </option>
+
+            <option value="draft">
+                Draft
+            </option>
+
+            <option value="rejected">
+                Rejected
+            </option>
+
+        </select>
+
+        <input
+            type="text"
+            name="search"
+            placeholder="Search article title"
+         value="<?php
+            if(isset($_GET["search"]))
+            {
+                echo $_GET["search"];
+            }
+        ?>"
+>
+
+        <button type="submit">
+            Filter
+        </button>
+
+    </form>
+
+    <br>
 
     <?php
 
