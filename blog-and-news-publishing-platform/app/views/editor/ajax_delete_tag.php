@@ -6,5 +6,9 @@ global $conn;
 
 if(isset($_POST["id"]))
 {
+    $id=$_POST["id"];
+
+    $sql="DELETE FROM tags
+    WHERE id=?";
 }
 ?>
