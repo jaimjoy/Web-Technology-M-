@@ -1,8 +1,29 @@
-﻿<?php
+<?php
 require_once("../../middleware/admin.php");
 require_once(__DIR__ . "/../../../config/database.php");
 
 global $conn;
+
+if(isset($_GET["delete"]))
+{
+    $id=$_GET["delete"];
+
+    $sql="DELETE FROM comments
+    WHERE id=?";
+
+    $stmt=$conn->prepare($sql);
+
+    $stmt->bind_param(
+        "i",
+        $id
+    );
+
+    $stmt->execute();
+
+    header("Location: manage_comments.php");
+
+    exit();
+}
 
 $sql="SELECT
 comments.*,
@@ -85,6 +106,20 @@ $result=$conn->query($sql);
             echo $row["body"];
 
             echo "</p>";
+
+            echo "<a href='manage_comments.php?delete=";
+
+            echo $row["id"];
+
+            echo "'>";
+
+            echo "<button class='btn-danger'>";
+
+            echo "Delete Comment";
+
+            echo "</button>";
+
+            echo "</a>";
 
             echo "</div>";
         }
