@@ -72,6 +72,10 @@ else
 
         echo "<br><br>";
 
+        echo "<p>";
+        echo $row["body"];
+        echo "</p>";
+
     }
     else
     {
