@@ -80,14 +80,6 @@ if(isset($_POST["reject"]))
 
 <div class="container">
 
-    <a
-        href="review_articles.php"
-        class="dashboard-card"
-        style="display:inline-block;margin-bottom:20px;"
-    >
-        ← Back To Review Articles
-    </a>
-
     <div class="card">
 
         <h1>Review Article</h1>
