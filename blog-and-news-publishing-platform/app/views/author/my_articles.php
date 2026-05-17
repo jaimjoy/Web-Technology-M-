@@ -99,3 +99,52 @@ $result = $article->getAuthorOwnArticles(
 
     <script>
 
+function deleteArticle(id)
+{
+    if(
+        !confirm(
+            "Delete this article?"
+        )
+    )
+    {
+        return;
+    }
+
+    let xhttp=
+    new XMLHttpRequest();
+
+    xhttp.open(
+        "POST",
+        "ajax_delete_article.php",
+        true
+    );
+
+    xhttp.setRequestHeader(
+        "Content-type",
+        "application/x-www-form-urlencoded"
+    );
+
+    xhttp.onload=function()
+    {
+        let data=
+        JSON.parse(this.responseText);
+
+        if(data.status=="success")
+        {
+            document
+            .getElementById(
+                "article"+id
+            )
+            .remove();
+        }
+    }
+
+    xhttp.send(
+        "id="+id
+    );
+}
+
+</script>
+
+</body>
+</html>
