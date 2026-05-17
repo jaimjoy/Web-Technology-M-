@@ -4,6 +4,14 @@ session_start();
 
 $article = new Article();
 
+if(isset($_POST["like"]) && isset($_SESSION["user_id"]))
+{
+    $article->likeArticle(
+        $_GET["id"],
+        $_SESSION["user_id"]
+    );
+}
+
 if(isset($_GET["id"]))
 {
     $id = $_GET["id"];
@@ -75,6 +83,19 @@ else
         echo "<p>";
         echo $row["body"];
         echo "</p>";
+
+        if(isset($_SESSION["user_id"]))
+        {
+            echo "
+            <br>
+            <button
+            onclick='likeArticle()'
+            class='btn-success'
+            >
+            Like
+            </button>
+            ";
+        }
 
     }
     else
