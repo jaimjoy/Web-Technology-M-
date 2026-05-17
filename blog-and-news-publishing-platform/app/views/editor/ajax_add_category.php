@@ -15,6 +15,19 @@ if(isset($_POST["name"]))
         $name
     ));
 
+    $slug=$slug."-".time();
+
+    $sql="INSERT INTO categories(name,slug)
+    VALUES(?,?)";
+
+    $stmt=$conn->prepare($sql);
+
+    $stmt->bind_param(
+        "ss",
+        $name,
+        $slug
+    );
+
     $stmt->execute();
 
     $id=$conn->insert_id;
