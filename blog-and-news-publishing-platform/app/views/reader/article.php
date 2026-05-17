@@ -97,6 +97,20 @@ else
             ";
         }
 
+        if(isset($_SESSION["user_id"]))
+        {
+            echo "
+            <br>
+            <button
+            onclick='saveArticle()'
+            id='saveBtn'
+            class='btn-success'
+            >
+            Save Article
+            </button>
+            ";
+        }
+
     }
     else
     {
