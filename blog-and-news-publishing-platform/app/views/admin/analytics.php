@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once("../../middleware/admin.php");
 require_once(__DIR__ . "/../../../config/database.php");
 
@@ -132,6 +132,49 @@ function percent($value,$total)
 
                 <?php
                 echo $published;
+                ?>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <h2>Pending Articles</h2>
+
+        <div class="bar">
+
+            <div
+                class="fill"
+                style="width:<?php
+                echo percent(
+                    $pending,
+                    $totalArticles
+                );
+                ?>%"
+            >
+
+                <?php
+                echo $pending;
+                ?>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <h2>Total Comments</h2>
+
+        <div class="bar">
+
+            <div
+                class="fill"
+                style="width:100%"
+            >
+
+                <?php
+                echo $comments;
                 ?>
 
             </div>
