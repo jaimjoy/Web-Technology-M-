@@ -25,6 +25,7 @@ if(isset($_GET["id"]))
     }
 
     $row = $article->getArticleById($id);
+    $comments = $article->getComments($id);
     $likes = $article->getLikeCount($id);
 }
 else
@@ -111,6 +112,32 @@ else
             ";
         }
 
+        echo "<hr>";
+        echo "<h3>Comments</h3>";
+        echo "<div id='commentsSection'>";
+        if($comments->num_rows > 0)
+        {
+            while($comment = $comments->fetch_assoc())
+            {
+                echo "<div class='card'>";
+                echo "<b>";
+                echo $comment["name"];
+                echo "</b>";
+
+                echo "<br><br>";
+
+                echo $comment["body"];
+
+                echo "<br>";
+                echo "</div>";
+                echo "</div>";
+            }
+        }
+        else
+        {
+            echo "No Comments Yet";
+        }
+        echo "</div>";
     }
     else
     {
