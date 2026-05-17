@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once("../../middleware/admin.php");
 require_once(__DIR__ . "/../../../config/database.php");
 
@@ -132,7 +132,9 @@ if(isset($_POST["update_role"]))
 
         <input
             type="text"
+            id="searchInput"
             name="search"
+            onkeyup="searchUsers()"
             placeholder="Search user name"
             value="<?php
             if(isset($_GET["search"]))
@@ -254,6 +256,45 @@ if(isset($_POST["update_role"]))
     </div>
 
 </div>
+
+<script>
+
+function searchUsers()
+{
+    let search=
+    document.getElementById(
+        "searchInput"
+    ).value;
+
+    let xhttp=
+    new XMLHttpRequest();
+
+    xhttp.open(
+        "POST",
+        "ajax_user_search.php",
+        true
+    );
+
+    xhttp.setRequestHeader(
+        "Content-type",
+        "application/x-www-form-urlencoded"
+    );
+
+    xhttp.onload=function()
+    {
+        document
+        .getElementById(
+            "userResults"
+        )
+        .innerHTML=this.responseText;
+    }
+
+    xhttp.send(
+        "search="+encodeURIComponent(search)
+    );
+}
+
+</script>
 
 </body>
 
