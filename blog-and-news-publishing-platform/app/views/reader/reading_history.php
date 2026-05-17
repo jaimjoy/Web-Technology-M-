@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once("../../models/Article.php");
 session_start();
 
@@ -54,10 +54,19 @@ $result = $stmt->get_result();
 
             echo "<h3>";
 
+            echo "<a href='article.php?id=".$row["id"]."'>";
+
             echo $row["title"];
+
+            echo "</a>";
 
             echo "</h3>";
 
+            echo "<p>";
+
+            echo $row["excerpt"];
+
+            echo "</p>";
             echo "</div>";
         }
     }
