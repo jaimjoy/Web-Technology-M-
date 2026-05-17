@@ -4,6 +4,50 @@ require_once(__DIR__ . "/../../../config/database.php");
 
 global $conn;
 
+if(isset($_GET["delete"]))
+{
+    $id=$_GET["delete"];
+
+    $sql="DELETE FROM users
+    WHERE id=?";
+
+    $stmt=$conn->prepare($sql);
+
+    $stmt->bind_param(
+        "i",
+        $id
+    );
+
+    $stmt->execute();
+
+    header("Location: manage_users.php");
+    exit();
+}
+
+if(isset($_POST["update_role"]))
+{
+    $id=$_POST["user_id"];
+
+    $role=$_POST["role"];
+
+    $sql="UPDATE users
+    SET role=?
+    WHERE id=?";
+
+    $stmt=$conn->prepare($sql);
+
+    $stmt->bind_param(
+        "si",
+        $role,
+        $id
+    );
+
+    $stmt->execute();
+
+    header("Location: manage_users.php");
+    exit();
+}
+
 $sql="SELECT *
 FROM users
 ORDER BY created_at DESC";
@@ -70,6 +114,49 @@ $result=$conn->query($sql);
             echo "<b>Current Role:</b> ";
 
             echo ucfirst($row["role"]);
+
+            echo "<br><br>";
+
+            echo "<form method='POST'>";
+
+            echo "<input
+            type='hidden'
+            name='user_id'
+            value='".$row["id"]."'>";
+
+            echo "<select name='role'>";
+
+            echo "<option value='reader'>Reader</option>";
+
+            echo "<option value='author'>Author</option>";
+
+            echo "<option value='editor'>Editor</option>";
+
+            echo "<option value='admin'>Admin</option>";
+
+            echo "</select>";
+
+            echo "<button
+            type='submit'
+            name='update_role'>";
+
+            echo "Update Role";
+
+            echo "</button>";
+
+            echo "</form>";
+
+            echo "<br>";
+
+            echo "<a href='manage_users.php?delete=".$row["id"]."'>";
+
+            echo "<button class='btn-danger'>";
+
+            echo "Delete User";
+
+            echo "</button>";
+
+            echo "</a>";
 
             echo "</div>";
         }
