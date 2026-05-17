@@ -88,4 +88,45 @@ if(isset($_POST["update"]))
 
         <br><br>
 
+        <select name="category_id">
+
+            <?php
+
+            while($category = $categories->fetch_assoc())
+            {
+                ?>
+
+                <option
+                    value="<?php
+                    echo $category["id"];
+                    ?>"
+
+                    <?php
+
+                    if(
+                        $category["id"] ==
+                        $row["category_id"]
+                    )
+                    {
+                        echo "selected";
+                    }
+
+                    ?>
+                >
+
+                    <?php
+                    echo $category["name"];
+                    ?>
+
+                </option>
+
+                <?php
+            }
+
+            ?>
+
+        </select>
+
+        <br><br>
+
        
