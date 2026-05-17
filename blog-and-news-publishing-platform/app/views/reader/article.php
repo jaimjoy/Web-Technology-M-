@@ -17,6 +17,7 @@ if(isset($_GET["id"]))
     }
 
     $row = $article->getArticleById($id);
+    $likes = $article->getLikeCount($id);
 }
 else
 {
@@ -56,6 +57,18 @@ else
 
         echo "<b>Author:</b> ";
         echo $row["author_name"];
+
+        echo "<br><br>";
+
+        echo "<b>Views:</b> ";
+        echo $row["view_count"];
+
+        echo "<br><br>";
+
+        echo "<b>Likes:</b> ";
+        echo "<span id='likeCount'>";
+        echo $likes["total_likes"];
+        echo "</span>";
 
         echo "<br><br>";
 
