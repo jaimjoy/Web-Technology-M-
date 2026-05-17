@@ -36,3 +36,26 @@ if(isset($_POST["update"]))
 }
 
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Article</title>
+    <link
+        rel="stylesheet"
+        href="../../../assets/css/style.css"
+    >
+</head>
+<body>
+
+        <a
+        href="dashboard.php"
+        class="dashboard-card"
+        style="display:inline-block;margin-bottom:20px;"
+        >
+            ← Back To Dashboard
+        </a>
+        
+    <h1>Edit Article</h1>
+
+   
