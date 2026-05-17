@@ -1,8 +1,9 @@
-﻿<?php
+<?php
 session_start();
 require_once("../../models/Article.php");
 
 $article = new Article();
+$result = $article->getPublishedArticles();
 $popularArticles = $article->getPopularArticles();
 ?>
 
@@ -62,6 +63,46 @@ $popularArticles = $article->getPopularArticles();
     Published Articles
     </h2>
 
+    <?php
+
+    if($result->num_rows > 0)
+    {
+        while($row = $result->fetch_assoc())
+        {
+            echo "<div class='card'>";
+
+            echo "<h3>";
+
+            echo "<a href='article.php?id=".$row["id"]."'>";
+
+            echo $row["title"];
+
+            echo "</a>";
+
+            echo "</h3>";
+
+            echo "<p>";
+
+            echo $row["excerpt"];
+
+            echo "</p>";
+
+            echo "<b>Author:</b> ";
+
+            echo $row["author_name"];
+
+            echo "<br><br>";
+            echo "</div>";
+
+            echo "<hr>";
+        }
+    }
+    else
+    {
+        echo "No Articles Found";
+    }
+
+    ?>
     </div>
 </body>
 </html>
