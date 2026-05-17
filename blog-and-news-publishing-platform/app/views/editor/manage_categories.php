@@ -29,6 +29,13 @@ $result=$conn->query($sql);
 <body>
 
 <div class="container">
+        <a
+            href="dashboard.php"
+            class="dashboard-card"
+            style="display:inline-block;margin-bottom:20px;"
+        >
+            ← Back To Dashboard
+        </a>
 
     <div class="premium-dashboard">
 
