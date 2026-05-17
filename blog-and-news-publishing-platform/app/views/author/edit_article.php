@@ -1,0 +1,38 @@
+<?php
+require_once("../../middleware/author.php");
+require_once("../../models/Article.php");
+
+$article = new Article();
+
+if(!isset($_GET["id"]))
+{
+    die("Article ID Missing");
+}
+
+$id = $_GET["id"];
+$row = $article->getArticleById($id);
+$categories = $article->getCategories();
+
+if(isset($_POST["update"]))
+{
+    $title = trim($_POST["title"]);
+    $excerpt = trim($_POST["excerpt"]);
+    $body = trim($_POST["body"]);
+    $category_id = $_POST["category_id"];
+    $status = $_POST["status"];
+
+    $article->updateArticle(
+        $id,
+        $_SESSION["user_id"],
+        $category_id,
+        $title,
+        $body,
+        $excerpt,
+        $status
+    );
+    echo "Article Updated";
+
+    $row = $article->getArticleById($id);
+}
+
+?>
