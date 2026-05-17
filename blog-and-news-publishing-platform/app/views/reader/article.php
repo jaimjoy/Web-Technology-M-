@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once("../../models/Article.php");
 session_start();
 
@@ -181,6 +181,110 @@ else
 
     ?>
 
+    <script>
+        function likeArticle()
+        {
+            let xhttp = new XMLHttpRequest();
+
+            xhttp.open("POST","ajax_like.php",true);
+
+            xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+            xhttp.onload = function()
+            {
+                let data =
+                JSON.parse(this.responseText);
+                document
+                .getElementById(
+                    "likeCount"
+                )
+                .innerHTML =
+                data.total_likes;
+            }
+
+            xhttp.send("article_id=<?php echo $row['id']; ?>");
+        }
+
+        function saveArticle()
+        {
+            let xhttp=
+            new XMLHttpRequest();
+
+            xhttp.open(
+                "POST",
+                "ajax_save.php",
+                true
+            );
+
+            xhttp.setRequestHeader(
+                "Content-type",
+                "application/x-www-form-urlencoded"
+            );
+
+            xhttp.onload=function()
+            {
+                document
+                .getElementById(
+                    "saveBtn"
+                )
+                .innerHTML=this.responseText;
+            }
+
+            xhttp.send(
+                "article_id=<?php
+                echo $row['id'];
+                ?>"
+            );
+        }
+
+        function addComment()
+        {
+            let body=
+            document.getElementById(
+                "commentBody"
+            ).value;
+
+            if(body=="")
+            {
+                return;
+            }
+
+            let xhttp=
+            new XMLHttpRequest();
+
+            xhttp.open(
+                "POST",
+                "ajax_comment.php",
+                true
+            );
+
+            xhttp.setRequestHeader(
+                "Content-type",
+                "application/x-www-form-urlencoded"
+            );
+
+            xhttp.onload=function()
+            {
+                document
+                .getElementById(
+                    "commentsSection"
+                )
+                .innerHTML+=this.responseText;
+
+                document
+                .getElementById(
+                    "commentBody"
+                )
+                .value="";
+            }
+
+            xhttp.send(
+                "article_id=<?php
+                echo $row['id'];
+                ?>&body="+encodeURIComponent(body)
+            );
+        }
+</script>
     </div>
 </body>
 </html>
