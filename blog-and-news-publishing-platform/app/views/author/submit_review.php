@@ -6,7 +6,6 @@ require_once("../../models/Article.php");
 
 $article = new Article();
 
-
 if(isset($_GET["id"]))
 {
     $id = $_GET["id"];
