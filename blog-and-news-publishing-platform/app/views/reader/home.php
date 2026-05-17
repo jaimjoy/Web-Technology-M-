@@ -3,6 +3,7 @@ session_start();
 require_once("../../models/Article.php");
 
 $article = new Article();
+$popularArticles = $article->getPopularArticles();
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +36,27 @@ $article = new Article();
     ?>
 
     </div>
+
+    <h2 class="section-title">
+    Popular Articles
+    </h2>
+
+    <?php
+    if($popularArticles->num_rows > 0)
+    {
+        while($popular = $popularArticles->fetch_assoc())
+        {
+            echo "<a href='article.php?id=".$popular["id"]."'>";
+
+            echo $popular["title"];
+
+            echo "</a>";
+
+            echo "<br><br>";
+        }
+    }
+
+    ?>
 
     </div>
 </body>
