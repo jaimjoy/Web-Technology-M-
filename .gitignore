@@ -1,0 +1,19 @@
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Logs
+*.log
+
+# Editor
+.vscode/
+.idea/
+
+# Out of scope (other roles)
+blog-and-news-publishing-platform/app/views/admin/
+blog-and-news-publishing-platform/app/views/author/
+blog-and-news-publishing-platform/app/views/editor/
+blog-and-news-publishing-platform/app/middleware/admin.php
+blog-and-news-publishing-platform/app/middleware/author.php
+blog-and-news-publishing-platform/app/middleware/editor.php
