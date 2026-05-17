@@ -4,6 +4,27 @@ require_once(__DIR__ . "/../../../config/database.php");
 
 global $conn;
 
+if(isset($_GET["delete"]))
+{
+    $id=$_GET["delete"];
+
+    $sql="DELETE FROM articles
+    WHERE id=?";
+
+    $stmt=$conn->prepare($sql);
+
+    $stmt->bind_param(
+        "i",
+        $id
+    );
+
+    $stmt->execute();
+
+    header("Location: manage_articles.php");
+
+    exit();
+}
+
 $sql="SELECT
 articles.*,
 users.name AS author_name
@@ -88,6 +109,10 @@ $result=$conn->query($sql);
 
             echo "<br><br>";
 
+             echo "<b>Featured:</b> ";
+
+            echo "<br><br>";
+
             echo "<a href='../reader/article.php?id=";
 
             echo $row["id"];
@@ -97,6 +122,32 @@ $result=$conn->query($sql);
             echo "<button>";
 
             echo "Open Article";
+
+            echo "</button>";
+
+            echo "</a>";
+
+            echo " ";
+
+            echo "<a href='manage_articles.php?feature=";
+
+            echo $row["id"];
+
+            echo "'>";
+
+            echo "</a>";
+
+            echo " ";
+
+            echo "<a href='manage_articles.php?delete=";
+
+            echo $row["id"];
+
+            echo "'>";
+
+            echo "<button class='btn-danger'>";
+
+            echo "Delete";
 
             echo "</button>";
 
