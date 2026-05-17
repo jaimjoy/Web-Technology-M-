@@ -32,6 +32,25 @@ if(isset($_POST["name"]))
 
     $id=$conn->insert_id;
 
-    
+    echo "
+    <div id='tag".$id."'>
+
+        <div class='card'>
+
+            <h3>
+                ".$name."
+            </h3>
+
+            <button
+            onclick='deleteTag(".$id.")'
+            class='btn-danger'
+            >
+            Delete
+            </button>
+
+        </div>
+
+    </div>
+    ";
 }
 ?>
