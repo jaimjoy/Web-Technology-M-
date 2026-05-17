@@ -58,6 +58,10 @@ $popularArticles = $article->getPopularArticles();
 
     ?>
 
+    <h2 class="section-title">
+    Published Articles
+    </h2>
+
     </div>
 </body>
 </html>
