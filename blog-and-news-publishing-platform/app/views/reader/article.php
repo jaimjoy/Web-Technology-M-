@@ -112,6 +112,41 @@ else
             ";
         }
 
+        if(isset($_SESSION["user_id"]))
+        {
+            echo "<hr>";
+
+            echo "<h3>Add Comment</h3>";
+
+            echo "
+            <textarea
+            id='commentBody'
+            rows='5'
+            cols='50'
+            placeholder='Write Comment'
+            ></textarea>
+
+            <br><br>
+
+            <button
+            onclick='addComment()'
+            class='btn-success'
+            >
+            Comment
+            </button>
+            ";
+        }
+        else
+        {
+            echo "<br>";
+
+            echo "
+            <a href='../auth/login.php'>
+                Login To Like, Save & Comment
+            </a>
+            ";
+}
+
         echo "<hr>";
         echo "<h3>Comments</h3>";
         echo "<div id='commentsSection'>";
