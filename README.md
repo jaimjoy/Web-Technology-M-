@@ -2,10 +2,6 @@
 
 A multi-role blog and news publishing platform built with PHP and MySQL.
 
-## My Role
-
-Reader — browse articles, like, save, comment, and view reading history.
-
 ## Project Structure
 
 The PHP project lives inside `blog-and-news-publishing-platform/`.
